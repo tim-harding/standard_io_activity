@@ -1,0 +1,9 @@
+*.log
+*.gz
+*.pdf
+*.out
+*.fls
+*.fdb_latexmk
+*.aux
+code/getc
+code/fgetc

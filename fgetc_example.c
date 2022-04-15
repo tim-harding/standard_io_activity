@@ -2,7 +2,7 @@
 
 int main() {
     printf("Type some text and press enter: ");
-    char c = getc(stdin);
+    char c = fgetc(stdin);
     printf("Echo: ");
     while (c != '\n') {
         printf("%c", c);

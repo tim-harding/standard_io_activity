@@ -16,4 +16,25 @@
 
 \begin{document}
 \maketitle
+
+Our team studied the \texttt{getc} and \texttt{fgetc} functions from standard IO. We wrote the following example code to demonstrate the functionality of these functions:
+
+\begin{verbatim}
+#include <stdio.h>
+
+int main() {
+    printf("Type some text and press enter: ");
+    char c = getc(stdin);
+    printf("Echo: ");
+    while (c != '\n') {
+        printf("%c", c);
+        c = getc(stdin);
+    }
+    printf("\n");
+}
+\end{verbatim}
+
+The version written for \texttt{fgetc} is nearly identical, with only the function name changing. According to the documentation, these functions are identical except for possible implementation differences, with \texttt{getc} having the possibility of being provided as a macro that evaluates the input stream more than once. \texttt{fgetc} will always be provided as a procedure. Although we use the return value of \texttt{getc} as a \texttt{char}, the function actually returns an \texttt{int} produced by casting from \texttt{unsigned char}. This is because the return value needs to support an end-of-file character, which is represented by $-1$. Generally, $-1$ is supported by the \texttt{char} type. However, there are some intricies of the C language specification not requiring this. In practice, on any modern machine, it is valid to cast the return type to a \texttt{char}.
+
+Unrelated to the functions themselves, note that although we print characters to the console as we read them, they will not appear to the user until the program exits. This is because \texttt{stdout} is line buffered, and we don't print a newline character until the end of the program.
 \end{document}
